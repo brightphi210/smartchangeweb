@@ -19,7 +19,7 @@ const Navbar = ({onClick}) => {
             />
         </div>
 
-        <div className=' lg:w-10/12 flex lg:pt-0 pb-4 pt-3 md:w-full xl:w-full'>
+        <div className=' lg:w-full flex lg:pt-0 pb-4 pt-3 md:w-full xl:w-full'>
 
             <p onClick={onClick} className='lg:hidden block'><SlMenu /></p>
 
