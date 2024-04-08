@@ -59,7 +59,7 @@ const DashHomeCompo = () => {
 
     
   return (
-    <div className='lg:mx-20 bg-zinc-50 h-auto lg:px-20 lg:py-10 lg:mt-32  mb-10 lg:rounded-3xl rounded-xl p-5 mx-3 mt-44'>
+    <div className='lg:mx-20 bg-zinc-100 h-auto lg:px-20 lg:py-10 lg:mt-32  mb-10 lg:rounded-3xl rounded-xl p-5 mx-3 mt-44'>
         <h2 className='lg:text-lg text-sm'>Welcome back, Ezekiel</h2>
 
         <div className='lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-10 mt-5 pb-10 flex flex-col gap-3'>

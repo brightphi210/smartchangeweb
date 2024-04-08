@@ -2,7 +2,7 @@ import React from 'react'
 
 const TransactionHistoryCompo = () => {
   return (
-    <div className='lg:mx-20 lg:mt-32 mt-44 bg-zinc-50 h-auto lg:px-20 mx-3 px-4 py-10  mb-10 rounded-3xl'>
+    <div className='lg:mx-20 lg:mt-32 mt-44 bg-zinc-100 h-auto lg:px-20 mx-3 px-4 py-10  mb-10 rounded-3xl'>
         <div>
             <h2 className='pb-5 font-semibold'>Transaction History</h2>
 
