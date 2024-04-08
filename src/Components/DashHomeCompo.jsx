@@ -59,39 +59,39 @@ const DashHomeCompo = () => {
 
     
   return (
-    <div className='lg:mx-20 bg-zinc-50 h-auto lg:px-20 lg:py-10 lg:mt-32  mb-10 lg:rounded-3xl round-2xl p-5 mx-3 mt-40'>
-        <h2>Welcome back, Ezekiel</h2>
+    <div className='lg:mx-20 bg-zinc-50 h-auto lg:px-20 lg:py-10 lg:mt-32  mb-10 lg:rounded-3xl rounded-xl p-5 mx-3 mt-44'>
+        <h2 className='lg:text-lg text-sm'>Welcome back, Ezekiel</h2>
 
         <div className='lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-10 mt-5 pb-10 flex flex-col gap-3'>
 
             <div className='bg-white w-full p-8 rounded-xl'>
                 <div className='flex pb-5'>
-                    <p className=' text-sm'>Users</p>
-                    <p className='ml-auto text-sm'>All</p>
+                    <p className=' lg:text-sm text-xs'>Users</p>
+                    <p className='ml-auto lg:text-sm text-xs'>All</p>
                 </div>
 
                 <div className='flex items-baseline'>
-                    <h2 className='text-3xl'>146</h2>
-                    <p className='ml-auto text-sm text-orange-400 underline cursor-pointer'>View more</p>
+                    <h2 className='lg:text-3xl text-xl'>146</h2>
+                    <p className='ml-auto lg:text-sm text-xs text-orange-400 underline cursor-pointer'>View more</p>
                 </div>
             </div>
 
             <div className='bg-white w-full p-8 rounded-xl'>
                 <div className='flex pb-5'>
-                    <p className=' text-sm'>Signups</p>
-                    <p className='ml-auto text-sm'>Daily</p>
+                    <p className=' lg:text-sm text-xs' >Signups</p>
+                    <p className='ml-auto lg:text-sm text-xs' >Daily</p>
                 </div>
 
                 <div className='flex items-baseline'>
-                    <h2 className='text-3xl'>146</h2>
-                    <p className='ml-auto text-sm text-orange-400 underline cursor-pointer'>View more</p>
+                    <h2 className='lg:text-3xl text-xl'>146</h2>
+                    <p className='ml-auto lg:text-sm text-xs  text-orange-400 underline cursor-pointer'>View more</p>
                 </div>
             </div>
 
 
             <div className='bg-white w-full p-8 rounded-xl'>
                 <div className='flex pb-5'>
-                    <p className=' text-sm'>Transaction volume</p>
+                    <p className='lg:text-sm text-xs'>Transaction volume</p>
                 </div>
 
                 <div className='flex items-baseline'>

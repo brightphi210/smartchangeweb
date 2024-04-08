@@ -8,17 +8,18 @@ const Navbar = () => {
   return (
     <div className='lg:flex lg:items-center 
         lg:px-20 lg:py-10  lg:h-24 block p-5 
-        lg:bg-none fixed w-full bg-zinc-white 
-        border-b border-zinc-100 border-solid bg-white '>
-        <div className='lg:w-full'>
-            <input type="text" placeholder="Search anything here . . " 
-                className="input input-bordered lg:w-96 w-full text-xs p-3 " 
-            />
+        lg:bg-none fixed w-full bg-zinc-white lg:justify-between
+        border-b border-zinc-100 border-solid bg-white'
+    >
 
-            <p></p>
+
+        <div className='lg:w-full lg:block hidden'>
+            <input type="text" placeholder="Search anything here . . " 
+                className="input input-bordered lg:w-2/4 " 
+            />
         </div>
 
-        <div className='lg:ml-auto lg:w-2/4 flex lg:pt-0 pt-6'>
+        <div className=' lg:w-10/12 flex lg:pt-0 pb-4 pt-3 md:w-full xl:w-3/5'>
 
             <p className='lg:hidden block'><SlMenu /></p>
 
@@ -45,6 +46,12 @@ const Navbar = () => {
 
             </div>
             
+        </div>
+
+        <div className='lg:w-full lg:hidden'>
+            <input type="text" placeholder="Search anything here . . " 
+                className="input input-bordered lg:w-96 w-full text-xs p-3 " 
+            />
         </div>
     </div>
   )
