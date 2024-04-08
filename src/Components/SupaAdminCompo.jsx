@@ -6,7 +6,7 @@ const SupaAdminCompo = () => {
         <div>
 
             <div className='lg:w-full '>
-                <ul className='text-left bg-yellow-200 lg:flex lg:justify-between grid grid-cols-2 p-3 gap-3 rounded-lg'>
+                <ul className='text-left bg-yellow-400 lg:flex lg:justify-between grid grid-cols-2 p-3 gap-3 rounded-lg'>
                     <li className='lg:text-sm text-xs'>Sub admin</li>
                     <li className='lg:text-sm text-xs'>Email address</li>
                     <li className='lg:text-sm text-xs'>Phone number</li>
