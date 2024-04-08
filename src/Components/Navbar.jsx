@@ -15,7 +15,7 @@ const Navbar = ({onClick}) => {
 
         <div className='lg:w-full lg:block hidden'>
             <input type="text" placeholder="Search anything here . . " 
-                className="input input-bordered lg:w-2/4 " 
+                className="input input-bordered lg:w-2/4 lg:text-xs " 
             />
         </div>
 
@@ -23,26 +23,26 @@ const Navbar = ({onClick}) => {
 
             <p onClick={onClick} className='lg:hidden block'><SlMenu /></p>
 
-            <div className='lg:flex lg:items-center lg:gap-10 flex gap-3 lg:m-0 ml-auto items-start'>
+            <div className='lg:flex lg:items-center lg:gap-7 flex gap-3 lg:m-0 ml-auto items-start'>
 
-                <p className='lg:text-2xl text-orange-400 text-lg'><IoNotifications /></p>
+                <p className='lg:text-xl text-orange-400 text-lg'><IoNotifications /></p>
 
 
 
                 <div className='flex gap-4 items-center'>
 
                     <div className='w-8, rounded-full overflow-hidden'>
-                        <img className='lg:w-10 w-7' src={pics} alt="" />
+                        <img className='lg:w-8 w-7' src={pics} alt="" />
                     </div>
 
                     <div>
-                        <h2 className='lg:text-lg text-xs'>Ezekiel Zeke</h2>
-                        <p className='lg:text-sm text-xs'>Admin</p>
+                        <h2 className='lg:text-sm text-xs'>Ezekiel Zeke</h2>
+                        <p className='lg:text-xs text-xs'>Admin</p>
                     </div>
                 </div>
 
 
-                <p className='lg:text-2xl text-lg'><IoMdArrowDropdown /></p>
+                <p className='lg:text-xl text-lg'><IoMdArrowDropdown /></p>
 
             </div>
             
