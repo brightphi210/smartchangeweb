@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import DashboardHome from "./Pages/DashboardHome";
+import DashboardOverviewUser from "./Pages/DashboardOverviewUser";
+import DashboardOverviewMerchant from "./Pages/DashboardOverviewMerchant";
+import TransactionHistory from "./Pages/TransactionHistory";
+import SupaAdmin from "./Pages/SupaAdmin";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DashboardHome />}/>
+          <Route path="/user-overview" element={<DashboardOverviewUser />}/>
+          <Route path="/merchant-overview" element={<DashboardOverviewMerchant />}/>
+          <Route path="/transaction-history" element={<TransactionHistory />}/>
+          <Route path="/supa-admin" element={<SupaAdmin />}/>
+          
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
