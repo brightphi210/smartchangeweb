@@ -6,9 +6,10 @@ import { PiNotepadLight } from "react-icons/pi";
 import { LuHistory } from "react-icons/lu";
 import { RiAdminLine } from "react-icons/ri";
 import { IoLogOutOutline } from "react-icons/io5";
+import { AiOutlineClose } from "react-icons/ai";
 
 
-const SideBar = () => {
+const SideBar = ({onClick}) => {
   return (
 
     // md	768px
@@ -20,8 +21,10 @@ const SideBar = () => {
         lg:bg-zinc-50 md:bg-zinc-50 
         lg:fixed md"fixed lg:h-screen
         md:h-screen lg:w-72 md:w-60 lg:p-10 
-        md:p-5 flex flex-col pt-48 pl-10'
+        md:p-5 flex flex-col pt-10 pl-10'
       >
+
+        <p onClick={onClick} className='lg:hidden block pb-5 text-2xl'><AiOutlineClose /></p>
 
         <div className='w-32 py-10 pt-0'>
           <img src={logo} alt="" />
