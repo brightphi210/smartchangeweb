@@ -16,25 +16,30 @@ const SideBar = () => {
     // xl	1280px
     // 2xl	1536px
 
-    <div className='lg:bg-zinc-50 md:bg-zinc-50 lg:fixed md"fixed lg:h-screen md:h-screen lg:w-72 md:w-60 lg:p-10 md:p-5 flex flex-col'>
+    <div className='
+        lg:bg-zinc-50 md:bg-zinc-50 
+        lg:fixed md"fixed lg:h-screen
+        md:h-screen lg:w-72 md:w-60 lg:p-10 
+        md:p-5 flex flex-col pt-48 pl-10'
+      >
 
         <div className='w-32 py-10 pt-0'>
           <img src={logo} alt="" />
         </div>
 
 
-        <ul className='flex flex-col gap-10'>
+        <ul className='flex flex-col lg:gap-10 gap-8'>
           <Link to={'/'}><li className='list-none text-sm flex gap-3 items-center hover:text-yellow-400'><MdDashboard /> Dashboard</li></Link>
           <Link to={'/'}><li className='list-none text-sm flex gap-3 items-center hover:text-yellow-400'><PiNotepadLight />Overview</li></Link>
           <div className='flex flex-col gap-5'>
-            <Link to={'/user-overview'}><p className='pl-5 text-sm'>User</p></Link>
-            <Link to={'/merchant-overview'}><p className='pl-5 text-sm'>Merchants</p></Link>
+            <Link to={'/user-overview'}><p className='pl-5 lg:text-sm text-xs'>User</p></Link>
+            <Link to={'/merchant-overview'}><p className='pl-5 lg:text-sm text-xs'>Merchants</p></Link>
           </div>
           <Link to={'/transaction-history'}><li className='list-none text-sm flex gap-3 items-center hover:text-yellow-400'><LuHistory />Transaction History</li></Link>
           <Link to={'/supa-admin'}><li className='list-none text-sm flex gap-3 items-center hover:text-yellow-400'><RiAdminLine />Super Admin</li></Link>
         </ul>
 
-        <button className='mt-auto bg-white mr-auto py-3 px-10 rounded-md text-sm flex gap-3 items-center'>Logout <IoLogOutOutline /></button>
+        <button className='lg:mt-auto bg-white mr-auto mt-8 py-3 px-10 rounded-md text-sm flex gap-3 items-center'>Logout <IoLogOutOutline /></button>
     </div>
   )
 }

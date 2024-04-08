@@ -4,7 +4,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { SlMenu } from "react-icons/sl";
 import pics from './images/ss.jpg'
 
-const Navbar = () => {
+const Navbar = ({onClick}) => {
   return (
     <div className='lg:flex lg:items-center 
         lg:px-20 lg:py-10  lg:h-24 block p-5 
@@ -21,7 +21,7 @@ const Navbar = () => {
 
         <div className=' lg:w-10/12 flex lg:pt-0 pb-4 pt-3 md:w-full xl:w-3/5'>
 
-            <p className='lg:hidden block'><SlMenu /></p>
+            <p onClick={onClick} className='lg:hidden block'><SlMenu /></p>
 
             <div className='lg:flex lg:items-center lg:gap-10 flex gap-3 lg:m-0 ml-auto items-start'>
 
