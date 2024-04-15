@@ -1,6 +1,5 @@
 import React from 'react'
 import { RiArrowDropDownFill } from "react-icons/ri";
-import { IoClose } from "react-icons/io5";
 
 const DashOverviewUserCompo = () => {
   return (
@@ -34,6 +33,32 @@ const DashOverviewUserCompo = () => {
                             <td className='pt-5'>-- --</td> 
                             <td className='flex items-center cursor-pointer pt-5' onClick={()=>document.getElementById('my_modal_3').showModal()}>Select action <RiArrowDropDownFill className='text-lg'/></td> 
                             <td className='pt-5 text-red-500'>Banned</td> 
+                        </tr>
+                        </tbody> 
+
+                        
+                        <tbody>
+                        <tr>
+                            <th className='pt-5'>1</th> 
+                            <td className='pt-5'>Ezekiel Zeke</td> 
+                            <td className='pt-5'>+2347038570548</td> 
+                            <td className='pt-5'>zek@gmail.com</td> 
+                            <td className='pt-5'>-- --</td> 
+                            <td className='flex items-center cursor-pointer pt-5' onClick={()=>document.getElementById('my_modal_3').showModal()}>Select action <RiArrowDropDownFill className='text-lg'/></td> 
+                            <td className='pt-5 text-green-500'>Reinstated</td> 
+                        </tr>
+                        </tbody> 
+
+                        
+                        <tbody>
+                        <tr>
+                            <th className='pt-5'>1</th> 
+                            <td className='pt-5'>Ezekiel Zeke</td> 
+                            <td className='pt-5'>+2347038570548</td> 
+                            <td className='pt-5'>zek@gmail.com</td> 
+                            <td className='pt-5'>-- --</td> 
+                            <td className='flex items-center cursor-pointer pt-5' onClick={()=>document.getElementById('my_modal_3').showModal()}>Select action <RiArrowDropDownFill className='text-lg'/></td> 
+                            <td className='pt-5 text-green-500'>Reinstated</td> 
                         </tr>
                         </tbody> 
                     </table>

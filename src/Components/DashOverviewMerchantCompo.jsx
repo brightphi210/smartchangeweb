@@ -1,27 +1,84 @@
 import React from 'react'
+import { RiArrowDropDownFill } from "react-icons/ri";
+
 
 const DashOverviewMerchantCompo = () => {
   return (
-    <div className='lg:mx-20 lg:mt-32 mt-44 bg-zinc-100 h-auto lg:px-20 mx-3 px-4 py-10  mb-10 lg:rounded-3xl rounded-lg'>
+    <div className='lg:mx-10 lg:mt-32 mt-44 bg-zinc-100 h-auto lg:px-10 mx-3 px-4 py-10  mb-10 lg:rounded-xl rounded-lg'>
         <div>
             <h2 className='pb-5 font-semibold lg:text-lg text-sm'>Overview - Merchant</h2>
 
 
             <div className='lg:w-full '>
-                <ul className='text-left bg-yellow-400 lg:flex lg:justify-between grid grid-cols-2 p-3 gap-3 rounded-lg'>
-                    <li className='lg:text-sm text-xs'>Username</li>
-                    <li className='lg:text-sm text-xs'>Phone number</li>
-                    <li className='lg:text-sm text-xs'>Email address</li>
-                    <li className='lg:text-sm text-xs'>Transaction Volume</li>
-                    <li className='lg:text-sm text-xs'>Action</li>
-                </ul>
-                <ul className='text-left border-b border-zinc-200 border-solid lg:pt-5 lg:pb-10 lg:flex lg:justify-between grid grid-cols-2 gap-3 py-5'>
-                    <li className='lg:text-sm text-xs col-span-1'>User0111042233</li>
-                    <li className='lg:text-sm text-xs col-span-1'>Ezekiel Emmanuelaudu</li>
-                    <li className='lg:text-sm text-xs col-span-1'>22:12 // April 2, 2024</li>
-                    <li className='lg:text-sm text-xs col-span-1'>250 ALGO</li>
-                    <li className='lg:text-sm text-xs text-yellow-400 cursor-pointer'>View more</li>
-                </ul>
+
+                <div className="overflow-x-auto">
+                    <table className="table table-xs">
+                        <thead>
+                        <tr className='bg-yellow-300 mb-10'>
+                            <th></th> 
+                            <th>Name</th> 
+                            <th>Phone number</th> 
+                            <th>Email address</th> 
+                            <th>Transaction Volume</th> 
+                            <th>Action</th> 
+                            <th>Status</th> 
+                        </tr>
+                        </thead> 
+                        
+                        <tbody>
+                        <tr>
+                            <th className='pt-5'>1</th> 
+                            <td className='pt-5'>Ezekiel Zeke</td> 
+                            <td className='pt-5'>+2347038570548</td> 
+                            <td className='pt-5'>zek@gmail.com</td> 
+                            <td className='pt-5'>-- --</td> 
+                            <td className='flex items-center cursor-pointer pt-5' onClick={()=>document.getElementById('my_modal_3').showModal()}>Select action <RiArrowDropDownFill className='text-lg'/></td> 
+                            <td className='pt-5 text-red-500'>Banned</td> 
+                        </tr>
+                        </tbody> 
+
+                        <tbody>
+                        <tr>
+                            <th className='pt-5'>1</th> 
+                            <td className='pt-5'>Ezekiel Zeke</td> 
+                            <td className='pt-5'>+2347038570548</td> 
+                            <td className='pt-5'>zek@gmail.com</td> 
+                            <td className='pt-5'>-- --</td> 
+                            <td className='flex items-center cursor-pointer pt-5' onClick={()=>document.getElementById('my_modal_3').showModal()}>Select action <RiArrowDropDownFill className='text-lg'/></td> 
+                            <td className='pt-5 text-green-500'>Reinstated</td> 
+                        </tr>
+                        </tbody> 
+
+
+                        <tbody>
+                        <tr>
+                            <th className='pt-5'>1</th> 
+                            <td className='pt-5'>Ezekiel Zeke</td> 
+                            <td className='pt-5'>+2347038570548</td> 
+                            <td className='pt-5'>zek@gmail.com</td> 
+                            <td className='pt-5'>-- --</td> 
+                            <td className='flex items-center cursor-pointer pt-5' onClick={()=>document.getElementById('my_modal_3').showModal()}>Select action <RiArrowDropDownFill className='text-lg'/></td> 
+                            <td className='pt-5 text-red-500'>Banned</td> 
+                        </tr>
+                        </tbody> 
+                    </table>
+                </div>
+
+                <dialog id="my_modal_3" className="modal">
+                    <div className="modal-box">
+                        <form method="dialog">
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                        
+                        <h3 className="font-bold text-sm">Action!</h3>
+                        <p className="py-4 text-sm">Select an action to take on this user</p>
+
+                        <div className='flex gap-3 m-auto'>
+                            <button className='bg-green-300 py-2 px-7 text-xs rounded-md'>Reinstate</button>
+                            <button className='bg-red-300 py-2 px-7 text-xs rounded-md'> Ban</button>
+                        </div>
+                    </div>
+                </dialog>
             </div>
         </div>
     </div>
