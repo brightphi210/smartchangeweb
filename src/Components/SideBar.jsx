@@ -20,7 +20,7 @@ const SideBar = ({onClick}) => {
     <div className='
         lg:bg-zinc-50 md:bg-zinc-50 
         lg:fixed md"fixed lg:h-screen
-        md:h-screen lg:w-72 md:w-60 lg:p-10 
+        md:h-screen lg:w-72 md:w-52 lg:p-10 
         md:p-5 flex flex-col pt-10 pl-10'
       >
 
@@ -38,8 +38,8 @@ const SideBar = ({onClick}) => {
             <Link to={'/user-overview'}><p className='pl-5 lg:text-sm text-xs'>User</p></Link>
             <Link to={'/merchant-overview'}><p className='pl-5 lg:text-sm text-xs'>Merchants</p></Link>
           </div>
-          <Link to={'/transaction-history'}><li className='list-none text-sm flex gap-3 items-center hover:text-yellow-400'><LuHistory />Transaction History</li></Link>
-          <Link to={'/supa-admin'}><li className='list-none text-sm flex gap-3 items-center hover:text-yellow-400'><RiAdminLine />Super Admin</li></Link>
+          <Link to={'/transaction-history'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><LuHistory />Transaction History</li></Link>
+          <Link to={'/supa-admin'}><li className='list-none flex gap-3 lg:text-xs text-sm items-center hover:text-yellow-400'><RiAdminLine />Super Admin</li></Link>
         </ul>
 
         <button className='lg:mt-auto bg-white mr-auto mt-8 py-3 px-10 rounded-md text-sm flex gap-3 items-center'>Logout <IoLogOutOutline /></button>

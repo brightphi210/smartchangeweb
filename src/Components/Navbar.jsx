@@ -8,7 +8,7 @@ const Navbar = ({onClick}) => {
   return (
     <div className='lg:flex lg:items-center 
         lg:px-20 lg:py-10  lg:h-24 block p-5 
-        lg:bg-none fixed w-full bg-zinc-white lg:justify-between
+        lg:bg-none fixed w-full bg-zinc-white 
         border-b border-zinc-100 border-solid bg-white'
     >
 
@@ -19,11 +19,11 @@ const Navbar = ({onClick}) => {
             />
         </div>
 
-        <div className=' lg:w-full flex lg:pt-0 pb-4 pt-3 md:w-full xl:w-full'>
+        <div className=' lg:w-2/3 md:w-full w-full flex lg:pt-0 pb-4 pt-3 '>
 
             <p onClick={onClick} className='lg:hidden block'><SlMenu /></p>
 
-            <div className='lg:flex lg:items-center lg:gap-7 flex gap-3 lg:m-0 ml-auto items-start'>
+            <div className='lg:flex lg:items-center lg:gap-7 flex gap-3 lg:m-0 ml-auto items-start lg:p-0'>
 
                 <p className='lg:text-xl text-orange-400 text-lg'><IoNotifications /></p>
 
@@ -36,7 +36,7 @@ const Navbar = ({onClick}) => {
                     </div>
 
                     <div>
-                        <h2 className='lg:text-sm text-xs'>Ezekiel Zeke</h2>
+                        <p className='lg:text-xs text-xs'>Ezekiel Zeke</p>
                         <p className='lg:text-xs text-xs'>Admin</p>
                     </div>
                 </div>

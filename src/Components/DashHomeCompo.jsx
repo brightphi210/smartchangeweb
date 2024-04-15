@@ -59,32 +59,43 @@ const DashHomeCompo = () => {
 
     
   return (
-    <div className='lg:mx-20 bg-zinc-100 h-auto lg:px-20 lg:py-10 lg:mt-32  mb-10 lg:rounded-3xl rounded-xl p-5 mx-3 mt-44'>
-        <h2 className='lg:text-lg text-sm'>Welcome back, Ezekiel</h2>
+    <div className='lg:mx-10 bg-zinc-100 h-auto lg:px-10 lg:py-10 lg:mt-32  mb-10 lg:rounded-3xl rounded-xl p-5 mx-3 mt-44'>
+        <h2 className='lg:text-sm text-xs'>Welcome back, Ezekiel</h2>
 
         <div className='lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-10 mt-5 pb-10 flex flex-col gap-3'>
 
             <div className='bg-white w-full p-8 rounded-xl'>
                 <div className='flex pb-5'>
-                    <p className=' lg:text-sm text-xs'>Users</p>
-                    <p className='ml-auto lg:text-sm text-xs'>All</p>
+                    <p className=' lg:text-xs text-xs'>Users</p>
+
+                    <select className='ml-auto lg:text-xs text-xs'>
+                      <option value="" className=' lg:text-xs text-xs lg:p-3'>All</option>
+                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Weekly</option>
+                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Monthly</option>
+                    </select>
                 </div>
 
                 <div className='flex items-baseline'>
-                    <h2 className='lg:text-3xl text-xl'>146</h2>
-                    <p className='ml-auto lg:text-sm text-xs text-orange-400 underline cursor-pointer'>View more</p>
+                    <h2 className='lg:text-xl text-sm'>146</h2>
+                    <p className='ml-auto lg:text-xs text-xs text-orange-400 underline cursor-pointer'>View more</p>
                 </div>
             </div>
 
             <div className='bg-white w-full p-8 rounded-xl'>
                 <div className='flex pb-5'>
-                    <p className=' lg:text-sm text-xs' >Signups</p>
-                    <p className='ml-auto lg:text-sm text-xs' >Daily</p>
+                    <p className=' lg:text-xs text-xs' >Signups</p>
+                    
+                    <select className='ml-auto lg:text-xs text-xs'>
+                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Daily</option>
+                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Weekly</option>
+                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Monthly</option>
+                    </select>
+                    
                 </div>
 
                 <div className='flex items-baseline'>
-                    <h2 className='lg:text-3xl text-xl'>146</h2>
-                    <p className='ml-auto lg:text-sm text-xs  text-orange-400 underline cursor-pointer'>View more</p>
+                    <h2 className='lg:text-xl text-sm'>146</h2>
+                    <p className='ml-auto lg:text-xs text-xs  text-orange-400 underline cursor-pointer'>View more</p>
                 </div>
             </div>
 
