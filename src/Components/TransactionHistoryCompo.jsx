@@ -5,7 +5,7 @@ import { RiArrowDropDownFill } from "react-icons/ri";
 
 const TransactionHistoryCompo = () => {
   return (
-    <div className='lg:mx-10 lg:mt-32 mt-44 bg-zinc-100 h-auto lg:px-10 mx-3 px-4 py-10  mb-10 lg:rounded-3xl rounded-lg'>
+    <div className='lg:mx-10 lg:mt-32 mt-44 bg-zinc-100 h-auto lg:px-10 mx-3 px-4 py-10  mb-10 lg:rounded-xl rounded-lg'>
         <div>
             <h2 className='pb-5 font-semibold lg:text-lg text-sm'>Transaction History</h2>
 
@@ -32,7 +32,19 @@ const TransactionHistoryCompo = () => {
                             <td className='pt-5'>Ezekiel Emmanuelaudu</td> 
                             <td className='pt-5'>22:12 // April 2, 2024</td> 
                             <td className='pt-5'>250 ALGO</td> 
-                            <td className='flex items-center cursor-pointer pt-5' onClick={()=>document.getElementById('my_modal_3').showModal()}>View chat log<RiArrowDropDownFill className='text-lg'/></td> 
+                            <td className='flex items-center cursor-pointer pt-5 text-yellow-500' >View chat log<RiArrowDropDownFill className='text-lg'/></td> 
+                        </tr>
+                        </tbody> 
+
+
+                        <tbody>
+                        <tr>
+                            <th className='pt-5'>1</th> 
+                            <td className='pt-5'>Idris Abubakar</td> 
+                            <td className='pt-5'>Ezekiel Emmanuelaudu</td> 
+                            <td className='pt-5'>22:12 // April 2, 2024</td> 
+                            <td className='pt-5'>250 ALGO</td> 
+                            <td className='flex items-center cursor-pointer pt-5 text-yellow-500'>View chat log<RiArrowDropDownFill className='text-lg'/></td> 
                         </tr>
                         </tbody> 
                     </table>
