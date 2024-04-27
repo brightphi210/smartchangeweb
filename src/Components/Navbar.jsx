@@ -9,7 +9,7 @@ const Navbar = ({onClick}) => {
     <div className='lg:flex lg:items-center 
         lg:px-20 lg:py-10  lg:h-24 block p-5 
         lg:bg-none fixed w-full bg-zinc-white 
-        border-b border-zinc-100 border-solid bg-white'
+        border-b border-zinc-100 border-solid bg-white z-50'
     >
 
 

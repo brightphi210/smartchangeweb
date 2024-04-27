@@ -5,6 +5,8 @@ import DashboardOverviewUser from "./Pages/DashboardOverviewUser";
 import DashboardOverviewMerchant from "./Pages/DashboardOverviewMerchant";
 import TransactionHistory from "./Pages/TransactionHistory";
 import SupaAdmin from "./Pages/SupaAdmin";
+import UserDetails from "./Pages/UserDetails";
+import MerchantDetails from "./Pages/MerchantDetails";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/merchant-overview" element={<DashboardOverviewMerchant />}/>
           <Route path="/transaction-history" element={<TransactionHistory />}/>
           <Route path="/supa-admin" element={<SupaAdmin />}/>
+          <Route path="/user-details" element={<UserDetails />}/>
+          <Route path="/merchant-details" element={<MerchantDetails />}/>
           
         </Routes>
       </BrowserRouter>
