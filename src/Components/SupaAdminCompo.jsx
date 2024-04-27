@@ -1,4 +1,5 @@
 import React from 'react'
+import { MdArrowDropDown } from 'react-icons/md';
 import { RiArrowDropDownFill } from "react-icons/ri";
 
 
@@ -18,7 +19,6 @@ const SupaAdminCompo = () => {
                         <th>Email address</th> 
                         <th>Phone number</th> 
                         <th>Action</th> 
-                        <th></th>
                     </tr>
                     </thead> 
                     
@@ -28,8 +28,15 @@ const SupaAdminCompo = () => {
                             <td className='pt-5'>Ezekiel Emmanuelaudu</td> 
                             <td className='pt-5'>ekon...@gmail.com</td> 
                             <td className='pt-5'>+234703...0548</td> 
-                            <td className='pt-5'>250 ALGO</td> 
-                            <td className='flex items-center cursor-pointer pt-5 text-yellow-500' >View chat log<RiArrowDropDownFill className='text-lg'/></td> 
+                                              <details className="dropdown">
+                                <summary className="m-1 btn bg-white hover:bg-zinc-50">
+                                <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
+                                </summary>
+                                <ul className="p-2 shadow menu dropdown-content z-[1] bg-white  rounded-md mt-1 w-40">
+                                    <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
+                                    <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
+                                </ul>
+                            </details>
                         </tr>
                     </tbody> 
 
@@ -40,8 +47,15 @@ const SupaAdminCompo = () => {
                             <td className='pt-5'>Ezekiel Emmanuelaudu</td> 
                             <td className='pt-5'>ekon...@gmail.com</td> 
                             <td className='pt-5'>+234703...0548</td> 
-                            <td className='pt-5'>250 ALGO</td> 
-                            <td className='flex items-center cursor-pointer pt-5 text-yellow-500' >View chat log<RiArrowDropDownFill className='text-lg'/></td> 
+                                              <details className="dropdown">
+                                <summary className="m-1 btn bg-white hover:bg-zinc-50">
+                                <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
+                                </summary>
+                                <ul className="p-2 shadow menu dropdown-content z-[1] bg-white  rounded-md mt-1 w-40">
+                                    <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
+                                    <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
+                                </ul>
+                            </details>
                         </tr>
                     </tbody> 
                 </table>
@@ -75,7 +89,7 @@ const SupaAdminCompo = () => {
                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         </form>
                         
-                        <h3 className="font-bold text-sm">Details!</h3>
+                        <h3 className="font-bold text-sm">Input Details!</h3>
 
                         <form action="" className='pt-5'>
                             <input type="text" placeholder="First name" className="input input-bordered w-full mb-3 text-xs " />
@@ -83,7 +97,7 @@ const SupaAdminCompo = () => {
                             <input type="text" placeholder="Email Address" className="input input-bordered w-full mb-3 text-xs " />
                         </form>
 
-                        <button className='flex m-auto text-center mt-10 text-xs bg-yellow-500 text-white p-3 px-6 rounded-lg ' onClick={()=>document.getElementById('my_modal_4').showModal()}>Create Admin</button>
+                        <button className='flex m-auto text-center justify-center mt-5 text-xs bg-yellow-500 text-white p-3 px-6 rounded-lg w-full ' onClick={()=>document.getElementById('my_modal_4').showModal()}>Create Admin</button>
                     </div>
                 </dialog>
             </div>
