@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route path="/login" element={<Login />}/>
+          <Route path="/" element={<Login />}/>
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<DashboardHome />}/>
             <Route path="/user-overview" element={<DashboardOverviewUser />}/>
