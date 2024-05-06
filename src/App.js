@@ -23,7 +23,7 @@ function App() {
             <Route path="/merchant-overview" element={<DashboardOverviewMerchant />}/>
             <Route path="/transaction-history" element={<TransactionHistory />}/>
             <Route path="/supa-admin" element={<SupaAdmin />}/>
-            <Route path="/user-details" element={<UserDetails />}/>
+            <Route path="/user-details/:id" element={<UserDetails />}/>
             <Route path="/merchant-details" element={<MerchantDetails />}/>
           </Route>
           

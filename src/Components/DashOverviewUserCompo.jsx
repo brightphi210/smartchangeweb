@@ -42,7 +42,7 @@ const DashOverviewUserCompo = () => {
     }, [])
 
 
-    console.log(usersAll);
+    // console.log(usersAll);
 
   return (
     <div className='lg:mx-10 lg:mt-32 mt-44 bg-zinc-100 h-[40rem] overflow-y-scroll  lg:px-10 mx-3 px-4 py-10  mb-10 lg:rounded-xl rounded-lg'>
@@ -76,7 +76,7 @@ const DashOverviewUserCompo = () => {
 
                                 <tbody key={index}>
                                 <tr>
-                                    <Link to={'/user-details'}><td className='pt-5 underline'>{eachUser.fullName}</td> </Link>
+                                    <Link to={`/user-details/${eachUser._id}`}><td className='pt-5 underline'>{eachUser.fullName}</td> </Link>
                                     <td className='pt-5'>{eachUser.phoneNo}</td> 
                                     <td className='pt-5'>{eachUser.email}</td> 
                                     <td className='pt-5'>-- --</td> 
@@ -117,7 +117,6 @@ const DashOverviewUserCompo = () => {
                         </dialog>
                 </div>
             )}
-
 
         </div>
     </div>
