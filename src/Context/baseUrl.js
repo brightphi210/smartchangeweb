@@ -1,6 +1,3 @@
 
 
-export const BASE_URL = 'https://smartchange-v1.onrender.com/'
-
-
-// /api/v1/admin/auth/login
+export const BASE_URL = 'https://smartchange-backend-v1.vercel.app/'

@@ -32,8 +32,8 @@ const SideBar = ({onClick}) => {
 
 
         <ul className='flex flex-col lg:gap-10 gap-8'>
-          <Link to={'/home'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><MdDashboard /> Dashboard</li></Link>
-          <Link to={'/home'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><PiNotepadLight />Overview</li></Link>
+          <Link to={'/dashboard'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><MdDashboard /> Dashboard</li></Link>
+          <Link to={'/dashboard'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><PiNotepadLight />Overview</li></Link>
           <div className='flex flex-col gap-5'>
             <Link to={'/user-overview'}><p className='pl-5 lg:text-sm text-xs'>User</p></Link>
             <Link to={'/merchant-overview'}><p className='pl-5 lg:text-sm text-xs'>Merchants</p></Link>

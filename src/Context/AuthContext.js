@@ -1,6 +1,7 @@
 
 import { Outlet, Navigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, createContext } from "react";
+
 
 
 const PrivateRoute = () => {
@@ -8,4 +9,6 @@ const PrivateRoute = () => {
     return authUser ? <Outlet /> : <Navigate to={'/'}/>
 }
 
-export default PrivateRoute;  
+export default PrivateRoute; 
+
+

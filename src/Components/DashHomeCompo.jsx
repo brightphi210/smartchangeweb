@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,6 +10,8 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
+
+import { BASE_URL } from '../Context/baseUrl';
 
 
 
@@ -56,65 +58,103 @@ export const options = {
 
 const DashHomeCompo = () => {
 
+  const url = `${BASE_URL}api/v1/admin/user_management/get/all_users`
+  const [token, setToken] = useState(()=> localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null)
+  const [usersCount, setUsersCount] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  console.log(token.token)
+
+  const getTotalUsers = async () =>{
+    try {
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${token.token}`,
+        }
+      })
+
+      if(res.ok || res.statusCode === 200){
+        const users = await res.json() 
+        setUsersCount(users.users)
+        setIsLoading(false)
+      }
+
+    } catch (error) {
+      console.log('An Error occurred', error);
+      setIsLoading(false)
+    }
+  }
+
+
+  useEffect(() => {
+    getTotalUsers();
+  }, [])
+
+
+  console.log(usersCount.length);
 
     
   return (
     <div className='lg:mx-10 bg-zinc-100 h-auto lg:px-10 lg:py-10 lg:mt-32  mb-10 lg:rounded-3xl rounded-xl p-5 mx-3 mt-44'>
         <h2 className='lg:text-sm text-xs'>Welcome back, Ezekiel</h2>
 
-        <div className='lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-10 mt-5 pb-10 flex flex-col gap-3'>
 
-            <div className='bg-white w-full p-8 rounded-xl'>
-                <div className='flex pb-5'>
-                    <p className=' lg:text-xs text-xs'>Users</p>
+      {isLoading === true ? 
 
-                    <select className='ml-auto lg:text-xs text-xs'>
-                      <option value="" className=' lg:text-xs text-xs lg:p-3'>All</option>
-                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Weekly</option>
-                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Monthly</option>
-                    </select>
-                </div>
+          <div className='flex justify-center items-center py-40'>
+            <span className="loading loading-spinner loading-md text-orange-400"></span>        
+          </div>
+       : (
+        <>
+          <div className='lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-10 mt-5 pb-10 flex flex-col gap-3'>
 
-                <div className='flex items-baseline'>
-                    <h2 className='lg:text-xl text-sm'>146</h2>
-                    <p className='ml-auto lg:text-xs text-xs text-orange-400 underline cursor-pointer'>View more</p>
-                </div>
-            </div>
+              <div className='bg-white w-full p-8 rounded-xl'>
+                  <div className='flex pb-5'>
+                      <p className=' lg:text-xs text-xs'>Users</p>
+                  </div>
 
-            <div className='bg-white w-full p-8 rounded-xl'>
-                <div className='flex pb-5'>
-                    <p className=' lg:text-xs text-xs' >Signups</p>
-                    
-                    <select className='ml-auto lg:text-xs text-xs'>
-                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Daily</option>
-                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Weekly</option>
-                      <option value="" className=' lg:text-xs text-xs lg:p-3'>Monthly</option>
-                    </select>
-                    
-                </div>
+                  <div className='flex items-baseline'>
+                      <h2 className='lg:text-xl text-sm'>{usersCount.length}</h2>
+                      <p className='ml-auto lg:text-xs text-xs text-orange-400 underline cursor-pointer'>View more</p>
+                  </div>
+              </div>
 
-                <div className='flex items-baseline'>
-                    <h2 className='lg:text-xl text-sm'>146</h2>
-                    <p className='ml-auto lg:text-xs text-xs  text-orange-400 underline cursor-pointer'>View more</p>
-                </div>
-            </div>
+              <div className='bg-white w-full p-8 rounded-xl'>
+                  <div className='flex pb-5'>
+                      <p className=' lg:text-xs text-xs' >Signups</p>
+                      
+                      <select className='ml-auto lg:text-xs text-xs'>
+                        <option value="" className=' lg:text-xs text-xs lg:p-3'>Daily</option>
+                        <option value="" className=' lg:text-xs text-xs lg:p-3'>Weekly</option>
+                        <option value="" className=' lg:text-xs text-xs lg:p-3'>Monthly</option>
+                      </select>
+                      
+                  </div>
 
-
-            <div className='bg-white w-full p-8 rounded-xl'>
-                <div className='flex pb-5'>
-                    <p className='lg:text-sm text-xs'>Transaction volume</p>
-                </div>
-
-                <div className='flex items-baseline'>
-                    <h2 className='text-3xl'>-- --</h2>
-                </div>
-            </div>
+                  <div className='flex items-baseline'>
+                      <h2 className='lg:text-xl text-sm'>146</h2>
+                      <p className='ml-auto lg:text-xs text-xs  text-orange-400 underline cursor-pointer'>View more</p>
+                  </div>
+              </div>
 
 
-        </div>
+              <div className='bg-white w-full p-8 rounded-xl'>
+                  <div className='flex pb-5'>
+                      <p className='lg:text-sm text-xs'>Transaction volume</p>
+                  </div>
+
+                  <div className='flex items-baseline'>
+                      <h2 className='text-3xl'>-- --</h2>
+                  </div>
+              </div>
 
 
-        <Bar options={options} data={data} />
+          </div>
+          <Bar options={options} data={data} />
+        </>
+      )}
     </div>
   )
 }
