@@ -68,7 +68,7 @@ const MerchantsDetailsCompo = () => {
           const result = await res.json() 
           setIsLoading(false)
           console.log(result);
-          navigate('/')
+          navigate('/merchant-overview')
         }
   
       } catch (error) {
@@ -95,7 +95,7 @@ const MerchantsDetailsCompo = () => {
           const result = await res.json() 
           setIsLoading(false)
           console.log(result);
-          navigate('/')
+          navigate('/merchant-overview')
         }
   
       } catch (error) {
@@ -118,74 +118,84 @@ const MerchantsDetailsCompo = () => {
         </div>
 
 
-        <div className='flex items-start bg-white p-5 px-8 rounded-xl'>
+        
+        {isLoading === true ? (
 
-          <div className=' flex items-center gap-10'>
-            <div className='rounded-full w-24 h-24 overflow-hidden bg-slate-300 flex items-center justify-center'>
-              {eachUser.profilePicture === null || eachUser.profilePicture === '' ? <p className='text-xs'>No Pics</p> : 
-              <img src={eachUser.profilePicture} alt="" className='rounded-full w-24'/>
-            }
-            </div>
-
+          <div className='flex justify-center items-center py-40'>
+              <span className="loading loading-spinner loading-md text-orange-400"></span>        
+          </div>
+          ) : (
             <div>
-              <h3>{eachUser.firstName} {eachUser.lastName}</h3>
-              <p className='lg:text-xs text-xs flex gap-3 items-center py-3'><p className='text-md bg-zinc-200 flex justify-center items-center p-2 rounded-full'>
-                <MdOutlineMarkEmailUnread /></p>{eachUser.email}</p>
-              <p className='lg:text-xs text-xs flex gap-3 items-center'><p className='text-md bg-zinc-200 flex justify-center items-center p-2 rounded-full'>
-                <MdCall /></p> {eachUser.phoneNo}</p>
+              <div className='flex items-start bg-white p-5 px-8 rounded-xl'>
+
+                <div className=' flex items-center gap-10'>
+                  <div className='rounded-full w-24 h-24 overflow-hidden bg-slate-300 flex items-center justify-center'>
+                    {eachUser.profilePicture === null || eachUser.profilePicture === '' ? <p className='text-xs'>No Pics</p> : 
+                    <img src={eachUser.profilePicture} alt="" className='rounded-full w-24'/>
+                  }
+                  </div>
+
+                  <div>
+                    <h3>{eachUser.firstName} {eachUser.lastName}</h3>
+                    <p className='lg:text-xs text-xs flex gap-3 items-center py-3'><p className='text-md bg-zinc-200 flex justify-center items-center p-2 rounded-full'>
+                      <MdOutlineMarkEmailUnread /></p>{eachUser.email}</p>
+                    <p className='lg:text-xs text-xs flex gap-3 items-center'><p className='text-md bg-zinc-200 flex justify-center items-center p-2 rounded-full'>
+                      <MdCall /></p> {eachUser.phoneNo}</p>
+                  </div>
+                </div>
+
+                <div className='ml-auto'>
+                  
+                  <details className="dropdown">
+                    <summary className="m-1 btn bg-zinc-100 hover:bg-zinc-50">
+                    <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
+                    </summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-white  rounded-md mt-2 w-40">
+                      <li onClick={banSingleUser} className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
+                      <li onClick={reinstateSingleUser} className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
+                    </ul>
+                  </details>
+                </div>
+              </div>
+
+              <div className='bg-white p-5 px-8 rounded-xl mt-4'>
+              <h2 className='pb-5 font-semibold lg:text-lg text-sm'>Transaction History</h2>
+              <table className="table table-xs">
+                  <thead>
+                  <tr className='bg-yellow-300 mb-10 -z-0'>
+                      <th>User name</th> 
+                      <th>Buying/Selling</th> 
+                      <th>Time/Date</th> 
+                      <th>Amount</th> 
+                      <th></th> 
+                  </tr>
+                  </thead> 
+                    
+                  <tbody>
+                  <tr>
+                      <td className='pt-5'>Ezekiel Zeke</td>
+                      <td className='pt-5'>Selling</td> 
+                      <td className='pt-5'>22:12 // April 2, 2024</td> 
+                      <td className='pt-5'>250 ALGO</td> 
+                      <Link to={'/user-details'}><td className='pt-5 underline text-orange-500'>View chat log</td> </Link>
+                  </tr>
+                </tbody>
+
+
+                <tbody>
+                  <tr>
+                      <td className='pt-5'>Ezekiel Zeke</td>
+                      <td className='pt-5'>Selling</td> 
+                      <td className='pt-5'>22:12 // April 2, 2024</td> 
+                      <td className='pt-5'>250 ALGO</td> 
+                      <Link to={'/user-details'}><td className='pt-5 underline text-orange-500'>View chat log</td> </Link>
+                  </tr>
+                </tbody>
+
+              </table>
+              </div>
             </div>
-          </div>
-
-          <div className='ml-auto'>
-            
-            <details className="dropdown">
-              <summary className="m-1 btn bg-zinc-100 hover:bg-zinc-50">
-              <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
-              </summary>
-              <ul className="p-2 shadow menu dropdown-content z-[1] bg-white  rounded-md mt-2 w-40">
-                <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
-                <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
-              </ul>
-            </details>
-          </div>
-        </div>
-
-        <div className='bg-white p-5 px-8 rounded-xl mt-4'>
-          <h2 className='pb-5 font-semibold lg:text-lg text-sm'>Transaction History</h2>
-          <table className="table table-xs">
-              <thead>
-              <tr className='bg-yellow-300 mb-10 -z-0'>
-                  <th>User name</th> 
-                  <th>Buying/Selling</th> 
-                  <th>Time/Date</th> 
-                  <th>Amount</th> 
-                  <th></th> 
-              </tr>
-              </thead> 
-                
-              <tbody>
-              <tr>
-                  <td className='pt-5'>Ezekiel Zeke</td>
-                  <td className='pt-5'>Selling</td> 
-                  <td className='pt-5'>22:12 // April 2, 2024</td> 
-                  <td className='pt-5'>250 ALGO</td> 
-                  <Link to={'/user-details'}><td className='pt-5 underline text-orange-500'>View chat log</td> </Link>
-              </tr>
-            </tbody>
-
-
-            <tbody>
-              <tr>
-                  <td className='pt-5'>Ezekiel Zeke</td>
-                  <td className='pt-5'>Selling</td> 
-                  <td className='pt-5'>22:12 // April 2, 2024</td> 
-                  <td className='pt-5'>250 ALGO</td> 
-                  <Link to={'/user-details'}><td className='pt-5 underline text-orange-500'>View chat log</td> </Link>
-              </tr>
-            </tbody>
-
-          </table>
-        </div>
+          )}
     </div>
 </div>
   )
