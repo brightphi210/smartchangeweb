@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from './images/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdDashboard } from "react-icons/md";
 import { PiNotepadLight } from "react-icons/pi";
 import { LuHistory } from "react-icons/lu";
@@ -10,6 +10,19 @@ import { AiOutlineClose } from "react-icons/ai";
 
 
 const SideBar = ({onClick}) => {
+
+  const navigate = useNavigate()
+  const [token, setToken] = useState(()=> localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null)
+
+
+  const logout = async (e) => {
+    e.preventDefault()
+    setToken(null)
+    localStorage.removeItem('token')
+    navigate('/login')
+  }
+
+
   return (
 
     // md	768px
@@ -32,8 +45,8 @@ const SideBar = ({onClick}) => {
 
 
         <ul className='flex flex-col lg:gap-10 gap-8'>
-          <Link to={'/dashboard'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><MdDashboard /> Dashboard</li></Link>
-          <Link to={'/dashboard'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><PiNotepadLight />Overview</li></Link>
+          <Link to={'/'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><MdDashboard /> Dashboard</li></Link>
+          <Link to={'/'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><PiNotepadLight />Overview</li></Link>
           <div className='flex flex-col gap-5'>
             <Link to={'/user-overview'}><p className='pl-5 lg:text-sm text-xs'>User</p></Link>
             <Link to={'/merchant-overview'}><p className='pl-5 lg:text-sm text-xs'>Merchants</p></Link>
@@ -42,7 +55,7 @@ const SideBar = ({onClick}) => {
           <Link to={'/supa-admin'}><li className='list-none flex gap-3 lg:text-xs text-sm items-center hover:text-yellow-400'><RiAdminLine />Super Admin</li></Link>
         </ul>
 
-        <button className='lg:mt-auto bg-white mr-auto mt-8 py-3 px-10 rounded-md text-sm flex gap-3 items-center'>Logout <IoLogOutOutline /></button>
+        <button onClick={logout} className='lg:mt-auto bg-white mr-auto mt-8 py-3 px-10 rounded-md text-sm flex gap-3 items-center'>Logout <IoLogOutOutline /></button>
     </div>
   )
 }

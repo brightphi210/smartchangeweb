@@ -6,7 +6,7 @@ import { useState, useContext, createContext } from "react";
 
 const PrivateRoute = () => {
     let [authUser, setAuthUser] = useState(()=>localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null);
-    return authUser ? <Outlet /> : <Navigate to={'/'}/>
+    return authUser ? <Outlet /> : <Navigate to={'/login'}/>
 }
 
 export default PrivateRoute; 

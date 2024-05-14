@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IoArrowBack } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import prof from './images/ss.jpg'
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
 import { MdArrowDropDown } from "react-icons/md";
@@ -15,7 +15,9 @@ const UserDeatilsCompo = () => {
   const {id} = useParams()
 
   const url =`${BASE_URL}api/v1/admin/user_management/get/${id}`
-
+  const url2 =`${BASE_URL}api/v1/admin/user_management/ban/${id}`
+  const url3 =`${BASE_URL}api/v1/admin/user_management/reinstate/${id}`
+  
 
   const [token, setToken] = useState(()=> localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null)
     const [eachUser, setEachUser] = useState({})
@@ -52,7 +54,56 @@ const UserDeatilsCompo = () => {
     }, [])
 
 
-    console.log(eachUser);
+    const banSingleUser = async () =>{
+      setIsLoading(true)
+      try {
+        const res = await fetch(url2, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token.token}`,
+          }
+        })
+  
+        if(res.ok || res.statusCode === 200){
+          const result = await res.json() 
+          setIsLoading(false)
+          console.log(result);
+          navigate('/')
+        }
+  
+      } catch (error) {
+        console.log('An Error occurred', error);
+        setIsLoading(false)
+      }
+    }
+
+
+    const navigate = useNavigate()
+
+    const reinstateSingleUser = async () =>{
+      setIsLoading(true)
+      try {
+        const res = await fetch(url3, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token.token}`,
+          }
+        })
+  
+        if(res.ok || res.statusCode === 200){
+          const result = await res.json() 
+          setIsLoading(false)
+          console.log(result);
+          navigate('/')
+        }
+  
+      } catch (error) {
+        console.log('An Error occurred', error);
+        setIsLoading(false)
+      }
+    }
 
 
 
@@ -69,8 +120,10 @@ const UserDeatilsCompo = () => {
             <div className='flex items-start bg-white p-5 px-8 rounded-xl'>
 
               <div className=' flex items-center gap-10'>
-                <div className='rounded-full'>
-                  <img src={prof} alt="" className='rounded-full w-24'/>
+                <div className='rounded-full w-24 h-24 overflow-hidden bg-slate-300 flex items-center justify-center'>
+                    {eachUser.profilePicture === null || eachUser.profilePicture === '' ? <p className='text-xs'>No Pics</p> : 
+                    <img src={eachUser.profilePicture} alt="" className='rounded-full w-24'/>
+                    }
                 </div>
 
                 <div>
@@ -89,8 +142,10 @@ const UserDeatilsCompo = () => {
                   <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
                   </summary>
                   <ul className="p-2 shadow menu dropdown-content z-[1] bg-white  rounded-md mt-2 w-40">
-                    <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
-                    <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
+                    <li onClick={banSingleUser} className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>
+                      Ban
+                    </li>
+                    <li onClick={reinstateSingleUser} className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
                   </ul>
                 </details>
               </div>

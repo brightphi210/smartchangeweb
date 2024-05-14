@@ -16,15 +16,15 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route path="/" element={<Login />}/>
+          <Route path="/login" element={<Login />}/>
           <Route element={<PrivateRoute />}>
-            <Route path="/dashboard" element={<DashboardHome />}/>
+            <Route path="/" element={<DashboardHome />}/>
             <Route path="/user-overview" element={<DashboardOverviewUser />}/>
             <Route path="/merchant-overview" element={<DashboardOverviewMerchant />}/>
             <Route path="/transaction-history" element={<TransactionHistory />}/>
             <Route path="/supa-admin" element={<SupaAdmin />}/>
             <Route path="/user-details/:id" element={<UserDetails />}/>
-            <Route path="/merchant-details" element={<MerchantDetails />}/>
+            <Route path="/merchant-details/:id" element={<MerchantDetails />}/>
           </Route>
           
         </Routes>

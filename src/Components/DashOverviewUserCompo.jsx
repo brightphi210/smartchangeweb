@@ -51,7 +51,7 @@ const DashOverviewUserCompo = () => {
 
 
 
-            {isLoading === true ? (
+          {isLoading === true ? (
 
                 <div className='flex justify-center items-center py-40'>
                     <span className="loading loading-spinner loading-md text-orange-400"></span>        
@@ -68,7 +68,8 @@ const DashOverviewUserCompo = () => {
                                 <th>Phone number</th> 
                                 <th>Email address</th> 
                                 <th>Transaction Volume</th> 
-                                <th>Action</th> 
+                                <th>Status</th> 
+                                {/* <th>Action</th>  */}
                             </tr>
                             </thead> 
 
@@ -80,7 +81,12 @@ const DashOverviewUserCompo = () => {
                                     <td className='pt-5'>{eachUser.phoneNo}</td> 
                                     <td className='pt-5'>{eachUser.email}</td> 
                                     <td className='pt-5'>-- --</td> 
-                                    <details className="dropdown">
+
+                                    {eachUser.blocked === false ? (<td className='pt-5 text-green-500'>Active</td> ) : (
+                                      <td className='pt-5 text-red-500'>Banned</td> 
+                                    )}
+                                    
+                                    {/* <details className="dropdown">
                                         <summary className="m-1 btn bg-white hover:bg-zinc-50">
                                         <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
                                         </summary>
@@ -88,12 +94,10 @@ const DashOverviewUserCompo = () => {
                                             <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
                                             <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
                                         </ul>
-                                    </details>
+                                    </details> */}
                                 </tr>
                                 </tbody> 
                             ))}
-                            
-
                         </table>
 
 
@@ -116,7 +120,7 @@ const DashOverviewUserCompo = () => {
                             </div>
                         </dialog>
                 </div>
-            )}
+          )}
 
         </div>
     </div>

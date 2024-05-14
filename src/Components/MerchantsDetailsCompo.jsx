@@ -1,12 +1,113 @@
 import React from 'react'
 import { IoArrowBack } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import prof from './images/ss.jpg'
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
 import { MdArrowDropDown } from "react-icons/md";
 import { MdCall } from "react-icons/md";
 
+import { useState, useEffect } from 'react';
+import { BASE_URL } from '../Context/baseUrl';
+
 const MerchantsDetailsCompo = () => {
+
+  const {id} = useParams()
+
+  const url =`${BASE_URL}api/v1/admin/merchant_management/get/${id}`
+  const url2 =`${BASE_URL}api/v1/admin/merchant_management/ban/${id}`
+  const url3 =`${BASE_URL}api/v1/admin/merchant_management/reinstate/${id}`
+  
+
+  const [token, setToken] = useState(()=> localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null)
+    const [eachUser, setEachUser] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+
+  
+    console.log(token.token)
+  
+    const getSingleUser = async () =>{
+      try {
+        const res = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token.token}`,
+          }
+        })
+  
+        if(res.ok || res.statusCode === 200){
+          const user = await res.json() 
+          setEachUser(user.merchant)
+          setIsLoading(false)
+        }
+  
+      } catch (error) {
+        console.log('An Error occurred', error);
+        setIsLoading(false)
+      }
+    }
+  
+  
+    useEffect(() => {
+      getSingleUser();
+    }, [])
+
+
+    const banSingleUser = async () =>{
+      setIsLoading(true)
+      try {
+        const res = await fetch(url2, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token.token}`,
+          }
+        })
+  
+        if(res.ok || res.statusCode === 200){
+          const result = await res.json() 
+          setIsLoading(false)
+          console.log(result);
+          navigate('/')
+        }
+  
+      } catch (error) {
+        console.log('An Error occurred', error);
+        setIsLoading(false)
+      }
+    }
+
+
+    const navigate = useNavigate()
+
+    const reinstateSingleUser = async () =>{
+      setIsLoading(true)
+      try {
+        const res = await fetch(url3, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${token.token}`,
+          }
+        })
+  
+        if(res.ok || res.statusCode === 200){
+          const result = await res.json() 
+          setIsLoading(false)
+          console.log(result);
+          navigate('/')
+        }
+  
+      } catch (error) {
+        console.log('An Error occurred', error);
+        setIsLoading(false)
+      }
+    }
+
+
+    console.log(eachUser);
+
+
   return (
     <div className='lg:mx-10 lg:mt-32 mt-44 bg-zinc-100 h-[35rem]  lg:px-10 mx-3 px-4 py-10  mb-10 lg:rounded-xl rounded-lg'>
     <div className=''>
@@ -20,16 +121,18 @@ const MerchantsDetailsCompo = () => {
         <div className='flex items-start bg-white p-5 px-8 rounded-xl'>
 
           <div className=' flex items-center gap-10'>
-            <div className='rounded-full'>
-              <img src={prof} alt="" className='rounded-full w-24'/>
+            <div className='rounded-full w-24 h-24 overflow-hidden bg-slate-300 flex items-center justify-center'>
+              {eachUser.profilePicture === null || eachUser.profilePicture === '' ? <p className='text-xs'>No Pics</p> : 
+              <img src={eachUser.profilePicture} alt="" className='rounded-full w-24'/>
+            }
             </div>
 
             <div>
-              <h3>Zeke Allen</h3>
+              <h3>{eachUser.firstName} {eachUser.lastName}</h3>
               <p className='lg:text-xs text-xs flex gap-3 items-center py-3'><p className='text-md bg-zinc-200 flex justify-center items-center p-2 rounded-full'>
-                <MdOutlineMarkEmailUnread /></p>ekonduemmanuelaudu@gmail.com</p>
+                <MdOutlineMarkEmailUnread /></p>{eachUser.email}</p>
               <p className='lg:text-xs text-xs flex gap-3 items-center'><p className='text-md bg-zinc-200 flex justify-center items-center p-2 rounded-full'>
-                <MdCall /></p> +2347038570548</p>
+                <MdCall /></p> {eachUser.phoneNo}</p>
             </div>
           </div>
 
