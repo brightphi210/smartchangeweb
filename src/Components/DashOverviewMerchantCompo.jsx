@@ -42,6 +42,8 @@ const DashOverviewMerchantCompo = () => {
         getTotalMerchants();
     }, [])
 
+
+    // console.log(merchantAll);
   return (
     <div className='lg:mx-10 lg:mt-32 mt-44 bg-zinc-100 h-[35rem] overflow-y-scroll lg:px-10 mx-3 px-4 py-10  mb-10 lg:rounded-xl rounded-lg'>
         <div>
@@ -79,9 +81,14 @@ const DashOverviewMerchantCompo = () => {
                                     <td className='pt-5'>{eachUser.email}</td> 
                                     <td className='pt-5'>-- --</td> 
 
-                                    {eachUser.blocked === false ? (<td className='pt-5 text-green-500'>Active</td> ) : (
-                                    <td className='pt-5 text-red-500'>Banned</td> 
-                                    )}
+                                    {eachUser.documentVerified === false ? 
+                                        <Link to={`/merchant-details/${eachUser._id}`}><td className='text-red-500 underline'>KYC Verification</td></Link> : (<>
+
+                                        {eachUser.blocked === false ? (<td className='pt-5 text-green-500'>Active</td> ) : (
+                                        <td className='pt-5 text-red-500'>Banned</td> 
+                                        )}
+
+                                    </>)}
                                     
                                     {/* <details className="dropdown">
                                         <summary className="m-1 btn bg-white hover:bg-zinc-50">

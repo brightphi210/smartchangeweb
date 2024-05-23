@@ -86,7 +86,7 @@ const DashOverviewUserCompo = () => {
                                       <td className='pt-5 text-red-500'>Banned</td> 
                                     )}
                                     
-                                    {/* <details className="dropdown">
+                                  {/* <details className="dropdown">
                                         <summary className="m-1 btn bg-white hover:bg-zinc-50">
                                         <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
                                         </summary>
