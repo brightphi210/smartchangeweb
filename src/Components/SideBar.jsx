@@ -7,6 +7,8 @@ import { LuHistory } from "react-icons/lu";
 import { RiAdminLine } from "react-icons/ri";
 import { IoLogOutOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
+import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
+
 
 
 const SideBar = ({onClick}) => {
@@ -53,6 +55,7 @@ const SideBar = ({onClick}) => {
           </div>
           <Link to={'/transaction-history'}><li className='list-none lg:text-xs text-sm flex gap-3 items-center hover:text-yellow-400'><LuHistory />Transaction History</li></Link>
           <Link to={'/supa-admin'}><li className='list-none flex gap-3 lg:text-xs text-sm items-center hover:text-yellow-400'><RiAdminLine />Super Admin</li></Link>
+          <Link to={'/activity-logs'}><li className='list-none flex gap-3 lg:text-xs text-sm items-center hover:text-yellow-400'><HiOutlineClipboardDocumentList />Activity Log</li></Link>
         </ul>
 
         <button onClick={logout} className='lg:mt-auto bg-white mr-auto mt-8 py-3 px-10 rounded-md text-sm flex gap-3 items-center'>Logout <IoLogOutOutline /></button>

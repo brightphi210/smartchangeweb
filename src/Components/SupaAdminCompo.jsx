@@ -70,6 +70,7 @@ const SupaAdminCompo = () => {
                 // setFullName('');
                 setEmail('');
                 setPassword('');
+                console.log(data)
             } else {
                 console.error('This is an error');
             }
@@ -81,8 +82,27 @@ const SupaAdminCompo = () => {
     }
 
 
-    const [isVisible, setIsVisible] = useState(false)
-
+    // const getSingleUser = async () =>{
+    //     try {
+    //       const res = await fetch(url, {
+    //         method: 'GET',
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //           'Authorization' : `Bearer ${token.token}`,
+    //         }
+    //       })
+    
+    //       if(res.ok || res.statusCode === 200){
+    //         const user = await res.json() 
+    //         setEachUser(user.merchant)
+    //         setIsLoading(false)
+    //       }
+    
+    //     } catch (error) {
+    //       console.log('An Error occurred', error);
+    //       setIsLoading(false)
+    //     }
+    // }
 
   return (
     <div className='lg:mx-10 lg:mt-32 mt-44 bg-zinc-100 h-auto lg:px-10 mx-3 px-4 py-10  mb-10 lg:rounded-xl rounded-lg'>
@@ -122,7 +142,7 @@ const SupaAdminCompo = () => {
                         </tbody> 
 
 
-                        <tbody>
+                        {/* <tbody>
                             <tr>
                                 <th className='pt-5'>1</th> 
                                 <td className='pt-5'>Ezekiel Emmanuelaudu</td> 
@@ -138,7 +158,7 @@ const SupaAdminCompo = () => {
                                     </ul>
                                 </details>
                             </tr>
-                        </tbody> 
+                        </tbody>  */}
                     </table>
 
 

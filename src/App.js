@@ -9,6 +9,7 @@ import UserDetails from "./Pages/UserDetails";
 import MerchantDetails from "./Pages/MerchantDetails";
 import PrivateRoute from "./Context/AuthContext";
 import Login from "./Pages/Login";
+import ActivityLogs from "./Pages/ActivityLogs";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/supa-admin" element={<SupaAdmin />}/>
             <Route path="/user-details/:id" element={<UserDetails />}/>
             <Route path="/merchant-details/:id" element={<MerchantDetails />}/>
+            <Route path="/activity-logs" element={<ActivityLogs />}/>
           </Route>
           
         </Routes>
