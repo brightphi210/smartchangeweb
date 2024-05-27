@@ -87,6 +87,7 @@ const SupaAdminCompo = () => {
     const [allAdmins, setAllAdmins] = useState([])
 
     const getAllAdmins = async () =>{
+        setIsLoading(true)
         try {
           const res = await fetch(url2, {
             method: 'GET',
@@ -124,6 +125,9 @@ const SupaAdminCompo = () => {
 
             <div className='lg:w-full '>
 
+
+
+
                 <div className="overflow-x-auto">
                     <table className="table table-xs">
                         <thead>
@@ -156,13 +160,17 @@ const SupaAdminCompo = () => {
                     </table>
 
 
+                    {isLoading === true && (
+                        <div className='flex justify-center m-auto items-center py-40 pb-0'>
+                            <span className="loading loading-spinner loading-md text-orange-400"></span>        
+                        </div>
+                    )}
+
+
                     <button className='flex m-auto text-center mt-40 text-xs bg-yellow-500 text-white p-3 px-6 rounded-lg ' onClick={()=>document.getElementById('my_modal_4').showModal()}>Create Admin</button>
                     
                 </div>
-                
-
-
-
+            
                 <dialog id="my_modal_4" className="modal">
                     <div className="modal-box">
                         <form method="dialog">
@@ -211,9 +219,7 @@ const SupaAdminCompo = () => {
                     </div>
                 </dialog>
 
-                
-
-
+            
                 <dialog id="my_modal_3" className="modal">
                     <div className="modal-box">
                         <form method="dialog">
@@ -234,6 +240,8 @@ const SupaAdminCompo = () => {
                         </div>
                     </div>
                 </dialog>
+
+            
             </div>
         </div>
     </div>

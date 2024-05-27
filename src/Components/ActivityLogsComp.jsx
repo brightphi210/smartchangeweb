@@ -14,6 +14,7 @@ const ActivityLogsComp = () => {
 
 
   const getActivityLogs = async () =>{
+    setIsLoading(true)
     try {
       const res = await fetch(url, {
         method: 'GET',
@@ -65,11 +66,11 @@ console.log(logs);
                           <th>Updated</th>
                       </tr>
                     </thead> 
+
                      
                      {logs.map((log, index)=> (
                       <tbody key={index}>
                         <tr>
-                            {/* <th className='pt-5'><li></li></th>  */}
                             <td className='pt-5'>{log.admin.fullName}</td> 
                             <td className='pt-5'>{log.admin.email}</td> 
                             <td className='pt-5'>{log.admin.email}</td> 
@@ -80,6 +81,12 @@ console.log(logs);
                       </tbody> 
                      ))}
                 </table>
+
+                {isLoading === true && (
+                    <div className='flex justify-center m-auto items-center py-40'>
+                      <span className="loading loading-spinner loading-md text-orange-400"></span>        
+                    </div>
+                )}
             </div>
         </div>
     </div>
