@@ -3,11 +3,12 @@ import { MdArrowDropDown } from 'react-icons/md';
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { BASE_URL } from '../Context/baseUrl';
 import success from './images/success.png'
+import { Link } from 'react-router-dom';
 
 
 const SupaAdminCompo = () => {
 
-    // /api/v1/admin/auth/register_super_admin
+    
 
     const url = `${BASE_URL}api/v1/admin/auth/create_sub_admin`
     const [token, setToken] = useState(()=> localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null)
@@ -33,7 +34,7 @@ const SupaAdminCompo = () => {
         setPassword(e.target.value)
     }
 
-
+    
 
     console.log(fullName, email, password);
 
@@ -82,27 +83,39 @@ const SupaAdminCompo = () => {
     }
 
 
-    // const getSingleUser = async () =>{
-    //     try {
-    //       const res = await fetch(url, {
-    //         method: 'GET',
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //           'Authorization' : `Bearer ${token.token}`,
-    //         }
-    //       })
+    const url2 = `${BASE_URL}api/v1/admin/auth/get/admins/all`
+    const [allAdmins, setAllAdmins] = useState([])
+
+    const getAllAdmins = async () =>{
+        try {
+          const res = await fetch(url2, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization' : `Bearer ${token.token}`,
+            }
+          })
     
-    //       if(res.ok || res.statusCode === 200){
-    //         const user = await res.json() 
-    //         setEachUser(user.merchant)
-    //         setIsLoading(false)
-    //       }
+          if(res.ok || res.statusCode === 200){
+            const admins = await res.json() 
+            setAllAdmins(admins.admins)
+            console.log(admins.admins);
+            setIsLoading(false)
+          }
     
-    //     } catch (error) {
-    //       console.log('An Error occurred', error);
-    //       setIsLoading(false)
-    //     }
-    // }
+        } catch (error) {
+          console.log('An Error occurred', error);
+          setIsLoading(false)
+        }
+    }
+
+
+    useEffect(()=>{
+        getAllAdmins()
+    },[])
+
+
+
 
   return (
     <div className='lg:mx-10 lg:mt-32 mt-44 bg-zinc-100 h-auto lg:px-10 mx-3 px-4 py-10  mb-10 lg:rounded-xl rounded-lg'>
@@ -115,50 +128,31 @@ const SupaAdminCompo = () => {
                     <table className="table table-xs">
                         <thead>
                         <tr className='bg-yellow-300 mb-10'>
-                            <th></th> 
                             <th>Sub admin</th> 
                             <th>Email address</th> 
-                            <th>Phone number</th> 
+                            <th>Role</th> 
                             <th>Action</th> 
                         </tr>
                         </thead> 
-                        
-                        <tbody>
-                            <tr>
-                                <th className='pt-5'>1</th> 
-                                <td className='pt-5'>Ezekiel Emmanuelaudu</td> 
-                                <td className='pt-5'>ekon...@gmail.com</td> 
-                                <td className='pt-5'>+234703...0548</td> 
-                                                <details className="dropdown">
-                                    <summary className="m-1 btn bg-white hover:bg-zinc-50">
-                                    <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
-                                    </summary>
-                                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-white  rounded-md mt-1 w-40">
-                                        <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
-                                        <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
-                                    </ul>
-                                </details>
-                            </tr>
-                        </tbody> 
 
-
-                        {/* <tbody>
-                            <tr>
-                                <th className='pt-5'>1</th> 
-                                <td className='pt-5'>Ezekiel Emmanuelaudu</td> 
-                                <td className='pt-5'>ekon...@gmail.com</td> 
-                                <td className='pt-5'>+234703...0548</td> 
-                                                <details className="dropdown">
-                                    <summary className="m-1 btn bg-white hover:bg-zinc-50">
-                                    <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
-                                    </summary>
-                                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-white  rounded-md mt-1 w-40">
-                                        <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
-                                        <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
-                                    </ul>
-                                </details>
-                            </tr>
-                        </tbody>  */}
+                        {allAdmins.map((admin)=>(
+                            <tbody>
+                                <tr>
+                                    <td className='pt-5'>{admin.fullName}</td> 
+                                    <td className='pt-5'>{admin.email}</td> 
+                                    <td className='pt-5'>{admin.role}</td> 
+                                                    <details className="dropdown">
+                                        <summary className="m-1 btn bg-white hover:bg-zinc-50">
+                                        <p className='flex items-center gap-2 lg:text-xs text-xs cursor-pointer'><p className='text-lg'><MdArrowDropDown /></p>Select Action</p>
+                                        </summary>
+                                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-white  rounded-md mt-1 w-40">
+                                            <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-red-500'>Ban</li>
+                                            <li className='hover:bg-zinc-100 p-4 rounded-md cursor-pointer text-green-600'>Reinstate</li>
+                                        </ul>
+                                    </details>
+                                </tr>
+                            </tbody> 
+                        ))}
                     </table>
 
 
@@ -233,9 +227,10 @@ const SupaAdminCompo = () => {
                         <div className='text-center pt-5'>
                             <h2>Congratulations</h2>
                             <p className='text-xs'>{fullName} has been successfully made an admin</p>
-                            <form method="dialog">
-                                <button className='bg-yellow-400 py-2 px-5 text-xs rounded-md text-white mt-4'>Close</button>
-                            </form>
+
+                            <Link to={'/'}>
+                                <button className='bg-yellow-400 py-2 px-5 text-xs rounded-md text-white mt-4'>Back to Dashboard</button>
+                            </Link>
                         </div>
                     </div>
                 </dialog>

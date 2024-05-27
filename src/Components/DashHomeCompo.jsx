@@ -63,7 +63,6 @@ const DashHomeCompo = () => {
   const [usersCount, setUsersCount] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  console.log(token.token)
 
   const getTotalUsers = async () =>{
     try {
@@ -91,9 +90,6 @@ const DashHomeCompo = () => {
   useEffect(() => {
     getTotalUsers();
   }, [])
-
-
-  console.log(usersCount.length);
 
     
   return (

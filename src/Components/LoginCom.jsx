@@ -44,7 +44,7 @@ const LoginCom = () => {
 
         if(res.ok){
           const data = await res.json();
-          console.log(data.token);
+          console.log(data);
           localStorage.setItem('token', JSON.stringify(data))
           navigate('/')
           

@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoNotifications } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { SlMenu } from "react-icons/sl";
 import pics from './images/ss.jpg'
 
 const Navbar = ({onClick}) => {
+
+    const [token, setToken] = useState(()=> localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null)
+
+    console.log(token.admin)
   return (
     <div className='lg:flex lg:items-center 
         lg:px-20 lg:py-10  lg:h-24 block p-5 
@@ -25,19 +29,19 @@ const Navbar = ({onClick}) => {
 
             <div className='lg:flex lg:items-center lg:gap-7 flex gap-3 lg:m-0 ml-auto items-start lg:p-0'>
 
-                <p className='lg:text-xl text-orange-400 text-lg'><IoNotifications /></p>
+                {/* <p className='lg:text-xl text-orange-400 text-lg'><IoNotifications /></p> */}
 
 
 
                 <div className='flex gap-4 items-center'>
 
-                    <div className='w-8, rounded-full overflow-hidden'>
-                        <img className='lg:w-8 w-7' src={pics} alt="" />
+                    <div className='w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-slate-300'>
+                        <p>A</p>
                     </div>
 
                     <div>
-                        <p className='lg:text-xs text-xs'>Ezekiel Zeke</p>
-                        <p className='lg:text-xs text-xs'>Admin</p>
+                        <p className='lg:text-xs text-xs'>{token.admin.fullName}</p>
+                        <p className='lg:text-xs text-xs'>{token.admin.role}</p>
                     </div>
                 </div>
 

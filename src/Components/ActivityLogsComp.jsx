@@ -73,7 +73,7 @@ console.log(logs);
                             <td className='pt-5'>{log.admin.fullName}</td> 
                             <td className='pt-5'>{log.admin.email}</td> 
                             <td className='pt-5'>{log.admin.email}</td> 
-                            <td className='pt-5'>{log.action}</td> 
+                            <td className='pt-5 text-green-500'>{log.action}</td> 
                             <td className='pt-5'>{log.createdAt}</td> 
                             <td className='pt-5'>{log.updatedAt}</td> 
                         </tr>
